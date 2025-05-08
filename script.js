@@ -1,5 +1,7 @@
 "use strict";
 
+// video play
+
 let playBtn = document.querySelector(".ri-play-large-fill");
 let video = document.querySelector("video");
 let thumbnail = document.querySelector("#thumbnail");
@@ -24,6 +26,8 @@ playBtn.addEventListener(
   false
 );
 
+//slider
+
 $(".bxslider").bxSlider({
   minSlides: 3,
   maxSlides: 3,
@@ -35,4 +39,32 @@ $(".bxslider").bxSlider({
   Controls: false,
 
   startText: "Start",
+});
+
+$(function () {
+  let vh = $(window).height();
+  $(window).scroll(function () {
+    var top = $(this).scrollTop();
+    var left = $(this).scrollLeft();
+    console.log(top, left);
+
+    if (top >= $("#contact").offset().top - 500) {
+      $(".internal a").removeClass("active");
+      $(".internal li:eq(4) a").addClass("active");
+    } else if (top >= $("#shop").offset().top - 50) {
+      $(".internal a").removeClass("active");
+      $(".internal li:eq(3) a").addClass("active");
+    } else if (top >= $("#menu").offset().top - 50) {
+      $(".internal a").removeClass("active");
+      $(".internal li:eq(2) a").addClass("active");
+    } else if (top >= $("#about").offset().top - 150) {
+      $(".internal a").removeClass("active");
+      $(".internal li:eq(1) a").addClass("active");
+    } else if (top >= $("#home").offset().top - 50) {
+      $(".internal a").removeClass("active");
+      $(".internal li:eq(0) a").addClass("active");
+    } else {
+      $(".internal a").removeClass("active");
+    }
+  });
 });
